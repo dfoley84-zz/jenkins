@@ -1,0 +1,15 @@
+node('Packer') 
+{
+withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']])
+{
+stage('Inspect') {
+    sh label: '', script: ''
+}
+stage('Validate') {
+    sh label: '', script: 'packer validate win.json'
+}
+stage('build') {
+    sh label: '', script: 'packer -var '\aws_access_key=\'$aws_access_key -var '\aws_secret_key=\'$aws_secret_key build win.json'
+}
+}
+}
