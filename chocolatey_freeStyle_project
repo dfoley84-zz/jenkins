@@ -1,0 +1,2 @@
+set +x
+echo sudo -S salt -N $NodeGroup cmd.run  $choco
