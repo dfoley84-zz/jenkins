@@ -21,3 +21,19 @@ stage('Clean') {
 }
 
 }
+
+
+if(params["Version"]=="Windows_2012"){
+    node('Packer') {
+         stage('Inspect'){
+sh label: '', script: 'packer version'
+}
+}
+}
+if(params["Version"]=="Windows_2016"){
+    node('Packer') {
+         stage('Inspect'){
+echo 'hello'
+}
+}
+}
